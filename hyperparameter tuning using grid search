@@ -1,0 +1,16 @@
+from sklearn.model_selection import ParameterGrid 
+param_grid = { 
+	 'embedding_dim': [128, 256, 512], 	 'num_heads': [4, 8, 16], 
+	 'num_layers': [2, 4, 6], 
+	 'batch_size': [32, 64] 
+} 
+ 
+
+best_score = float('-inf') 
+best_params = None 
+for params in ParameterGrid(param_grid): 
+	 score = train_and_evaluate_model(params)  # Custom function to train and evaluate the model 
+	 if score > best_score: 
+		 best_score = score 
+		 best_params = params 
+print("Best Parameters:", best_params) 
